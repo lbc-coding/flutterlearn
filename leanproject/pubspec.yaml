@@ -42,10 +42,22 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - images/ic_arrow_right_sys.png
-    - images/ic_message_sys.png
-    - images/ic_set_sys.png
-    - images/ic_upload_sys.png
+    - icons/arrow_right/ic_arrow_right_sys.png
+    - icons/arrow_right/1.0x/ic_arrow_right_sys.png
+    - icons/arrow_right/2.0x/ic_arrow_right_sys.png
+    - icons/arrow_right/3.0x/ic_arrow_right_sys.png
+    - icons/engineer_photo/ic_engineer.png
+    - icons/engineer_photo/1.0x/ic_engineer.png
+    - icons/engineer_photo/2.0x/ic_engineer.png
+    - icons/engineer_photo/3.0x/ic_engineer.png
+    - icons/set_sys/ic_set_sys.png
+    - icons/set_sys/1.0x/ic_set_sys.png
+    - icons/set_sys/2.0x/ic_set_sys.png
+    - icons/set_sys/3.0x/ic_set_sys.png
+    - icons/upload_sys/ic_upload_sys.png
+    - icons/upload_sys/1.0x/ic_upload_sys.png
+    - icons/upload_sys/2.0x/ic_upload_sys.png
+    - icons/upload_sys/3.0x/ic_upload_sys.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
