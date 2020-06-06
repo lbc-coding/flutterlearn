@@ -1,138 +1,73 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:leanprojectapp/model/homepage_model.dart';
 
-void main() {
-  runApp(LeanProject());
-}
-
-// 创建应用，返回一个纸墨风格应用
-class LeanProject extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '精益工程', //应用名称精益工程
-      initialRoute: '/',
-      // 定义项目路由
-      routes: {
-        '/': (contxt) => LpHomePage(),
-      },
-    );
-  }
-}
-
-// 定义应用主页为多状态组件
-class LpHomePage extends StatefulWidget {
-  @override
-  _LpHomePage createState() => _LpHomePage();
-}
-
-// 定义主页状态组件
-class _LpHomePage extends State<LpHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    // 定义主页框架
-    return new Scaffold(
-      body: new Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          // 首页顶部控件
-          new TopWidget(
-            model: TopItemModel(
-              place_img_dir:
-                  'icons/engineer_photo/ic_engineer.png', // 用户头像加载占位图
-              user_photo_url:
-                  'https://piccdn.igetget.com/img/201912/11/201912111849270831585814.png', // 用户头像url
-              user_name: '刘润', // 用户姓名
-              user_company: '杭州越颖装饰工程有限公司', // 用户所属公司
-              user_roles: ['施工员', '工程经理', '材料员'], // 用户角色列表
-            ),
-          ),
-          // 首页功能入口区
-          new BottomFunWidget(),
-        ],
-      ),
-    );
-  }
-}
-
-// 定义主页top控件数据结构
-class TopItemModel {
-  String place_img_dir; // 用户头像加载完成前占位图
-  String user_photo_url; // 用户头像URL
-  String user_name; // 用户姓名
-  String user_company; // 用户所属公司
-  List<String> user_roles; // 接收的用户角色列表
-
-  // 构造函数语法糖，为属性赋值
-  TopItemModel(
-      {this.place_img_dir,
-      this.user_photo_url,
-      this.user_name,
-      this.user_company,
-      this.user_roles});
-}
-
-// 定义顶部控件
+// 定义首页顶部控件
 class TopWidget extends StatelessWidget {
   final TopItemModel model;
-
   // 构造函数语法糖，为控件属性赋值
   TopWidget({Key key, this.model}) : super(key: key);
-
+  @override
   Widget build(BuildContext context) {
-    return new Container(
-      width: 500,
-      height: 204,
-      alignment: Alignment.center,
-      padding: const EdgeInsets.fromLTRB(16, 54, 16, 32),
-      //渐变色装饰
-      decoration: new BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF1D7BEA), Color(0xFF083EB3)],
+    return FractionallySizedBox(
+      child: Container(
+        //width: 375,
+        height: 204,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(16, 54, 16, 0),
+        //渐变色装饰
+        decoration: new BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFF1D7BEA), Color(0xFF083EB3)],
+          ),
         ),
-      ),
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          // 上面的工具行
-          ToolBarRow(context),
-          // 下面的用户信息行
-          UserMsgRow(context),
-        ],
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            // 上面的工具行
+            ToolBarRow(context),
+            // 下面的用户信息行
+            UserMsgRow(context),
+          ],
+        ),
       ),
     );
   }
 
-  // 构建上部工具行
+  // 构建卡片上部工具行
   Widget ToolBarRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         // 上传列表入口
-        new IconButton(
-            icon: Image.asset('icons/upload_sys/ic_upload_sys.png'),
-            color: Colors.white,
-            iconSize: 24.0,
-            tooltip: '查看上传列表',
-            onPressed: () {}),
+        new Padding(
+          padding: EdgeInsets.fromLTRB(24, 0, 0, 20),
+          child: new IconButton(
+              icon: Image.asset('icons/upload_sys/ic_upload_sys.png'),
+              color: Colors.white,
+              iconSize: 24.0,
+              tooltip: '查看上传列表',
+              onPressed: () {}),
+        ),
         // 设置入口
-        new IconButton(
-            icon: Image.asset('icons/set_sys/ic_set_sys.png'),
-            color: Colors.white,
-            iconSize: 24.0,
-            tooltip: '设置',
-            onPressed: () {}),
+        new Padding(
+          padding: EdgeInsets.fromLTRB(24, 0, 0, 20),
+          child: new IconButton(
+              icon: Image.asset('icons/set_sys/ic_set_sys.png'),
+              color: Colors.white,
+              iconSize: 24.0,
+              tooltip: '设置',
+              onPressed: () {}),
+        ),
       ],
     );
   }
 
-  // 构建下部用户信息行
+  // 构建卡片下部用户信息行
   Widget UserMsgRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -143,7 +78,7 @@ class TopWidget extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
           child: new ClipOval(
             child: FadeInImage.assetNetwork(
-              placeholder: model.place_img_dir,
+              placeholder: 'icons/engineer_photo/ic_engineer.png',
               image: model.user_photo_url,
               width: 60,
               height: 60,
@@ -155,6 +90,7 @@ class TopWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               // 用户姓名与角色
               Row(
@@ -166,6 +102,7 @@ class TopWidget extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(0, 3, 0, 3),
                     child: new Text(
                       model.user_name,
+                      textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
                     ),
                   ),
@@ -219,28 +156,11 @@ class TopWidget extends StatelessWidget {
   }
 }
 
-// 定义主页功能区
-class BottomFunWidget extends StatefulWidget {
-  @override
-  _BottomFunWidget createState() => _BottomFunWidget();
-}
-
-class _BottomFunWidget extends State<BottomFunWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      color: Colors.white,
-      width: 500,
-      height: 550,
-    );
-  }
-}
-
-// 用户角色生成器构造函数
+// 顶部用户信息的用户角色生成器构造函数
 userRolesGenerator(List<String> rolesInList) {
   List<Widget> rolesOutList = [];
   int listLen = rolesInList.length;
-  
+
   if (listLen == 1) {
     rolesOutList.add(
       Container(
@@ -306,7 +226,7 @@ userRolesGenerator(List<String> rolesInList) {
         ),
       ),
     );
-  }else{
+  } else {
     rolesOutList.add(
       Container(
         alignment: Alignment.center,
@@ -354,3 +274,118 @@ userRolesGenerator(List<String> rolesInList) {
   print(rolesOutList);
   return rolesOutList;
 }
+
+// 定义首页下部功能区
+class BottomFunWidget extends StatefulWidget {
+  @override
+  _BottomFunWidget createState() => _BottomFunWidget();
+}
+
+class _BottomFunWidget extends State<BottomFunWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      height: 610,
+      //color: Colors.grey,
+      alignment: Alignment.topCenter,
+      child: new GridView.count(
+        primary: false,
+        padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+        mainAxisSpacing: 35,
+        crossAxisCount: 3,
+        children: userFunListGenerator(funlist)[0],
+      ),
+    );
+  }
+}
+
+// 定义用户功能列表生成器
+userFunListGenerator(Map<String, String> user_fun_getlist) {
+  int funcounter = user_fun_getlist.length;
+  List<Widget> user_fun_outlist = [];
+  List result_list = [];
+  if (funcounter == 0) {
+    for (int i = 1; i < 10; i++){
+      user_fun_outlist
+      ..add(
+        Container(
+          height: 90,
+          width: 80,
+          alignment: Alignment.topCenter,
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              IconButton(
+                icon: Image.network(
+                    'http://img.599ku.com/element_min_new_pic/0/56/30/81/5b01ebee94c1839c4c23cb998da42a47.png'),
+                iconSize: 80,
+                onPressed: () {},
+                tooltip: '点一点',
+              ),
+              Text(
+                  '暂无数据',
+                  style: TextStyle(fontSize: 15, color: Color(0xFF2F2F39)),
+                ),
+            ],
+          ),
+        ),
+      );
+    }
+  } else {
+    user_fun_getlist.forEach((String key, String value) {
+      String fun_name = key;
+      String icon_url = value;
+      user_fun_outlist
+        ..add(
+          Container(
+            height: 90,
+            width: 80,
+            alignment: Alignment.topCenter,
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  icon: Image.network(icon_url),
+                  iconSize: 80,
+                  onPressed: () {},
+                  tooltip: fun_name,
+                ),
+                Text(
+                  fun_name,
+                  style: TextStyle(fontSize: 15, color: Color(0xFF2F2F39)),
+                ),
+              ],
+            ),
+          ),
+        );
+    });
+  }
+  result_list..add(user_fun_outlist)..add(funcounter);
+  return result_list;
+}
+
+// 模拟后端返回用户功能列表
+Map<String, String> funlist = {
+  '我是刘润':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111849270831585814.png',
+  '我是余剑锋':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111857082259233096.png',
+  '我是万维钢':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111908345980865404.png',
+  '我是田轩':
+      'https://piccdn3.umiwi.com/img/201912/12/201912121343005044860898.png',
+  '我是罗振宇':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111912369664627642.png',
+  '刘润是我':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111849270831585814.png',
+  '余剑锋是我':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111857082259233096.png',
+  '万维钢是我':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111908345980865404.png',
+  '田轩是我':
+      'https://piccdn3.umiwi.com/img/201912/12/201912121343005044860898.png',
+  '罗振宇是我':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111912369664627642.png',
+};
