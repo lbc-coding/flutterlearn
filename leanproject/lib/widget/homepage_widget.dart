@@ -144,7 +144,10 @@ class TopWidget extends StatelessWidget {
                   color: Colors.white,
                   iconSize: 16.0,
                   tooltip: '设置',
-                  onPressed: () {}),
+                  onPressed: () {
+                    // 临时定义导航到登录页
+                    Navigator.pushNamed(context, 'loginpage');
+                  }),
             ),
             // 占位容器
             new Container(

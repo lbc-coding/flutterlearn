@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:leanprojectapp/pages/homepage.dart';
+import 'package:leanprojectapp/pages/loginpage.dart';
 
 void main() {
   runApp(LeanProjectApp());
@@ -20,6 +21,7 @@ class LeanProjectApp extends StatelessWidget {
       // 定义项目路由
       routes: {
         '/': (BuildContext contxt) => HomePage(),
+        'loginpage':  (BuildContext contxt) => LogInPage(),
       },
     );
   }
