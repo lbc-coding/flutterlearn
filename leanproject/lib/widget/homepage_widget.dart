@@ -14,7 +14,7 @@ class TopWidget extends StatelessWidget {
         //width: 375,
         height: 204,
         alignment: Alignment.center,
-        padding: const EdgeInsets.fromLTRB(16, 54, 16, 0),
+        padding: const EdgeInsets.fromLTRB(16, 40, 16, 0),
         //渐变色装饰
         decoration: new BoxDecoration(
           gradient: LinearGradient(
@@ -45,7 +45,7 @@ class TopWidget extends StatelessWidget {
       children: <Widget>[
         // 上传列表入口
         new Padding(
-          padding: EdgeInsets.fromLTRB(24, 0, 0, 20),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
           child: new IconButton(
               icon: Image.asset('icons/upload_sys/ic_upload_sys.png'),
               color: Colors.white,
@@ -55,7 +55,7 @@ class TopWidget extends StatelessWidget {
         ),
         // 设置入口
         new Padding(
-          padding: EdgeInsets.fromLTRB(24, 0, 0, 20),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
           child: new IconButton(
               icon: Image.asset('icons/set_sys/ic_set_sys.png'),
               color: Colors.white,
@@ -104,6 +104,7 @@ class TopWidget extends StatelessWidget {
                       model.user_name,
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
+                      maxLines: 1,
                     ),
                   ),
                   // 用户角色
@@ -123,6 +124,7 @@ class TopWidget extends StatelessWidget {
                 child: new Text(
                   model.user_company,
                   style: TextStyle(fontSize: 14, color: Color(0xFFFFFFFF)),
+                  maxLines: 1,
                 ),
               ),
             ],
@@ -180,6 +182,7 @@ userRolesGenerator(List<String> rolesInList) {
             fontSize: 11,
             color: Color(0xFF00C0EF),
           ),
+          maxLines: 1,
         ),
       ),
     );
@@ -285,7 +288,7 @@ class _BottomFunWidget extends State<BottomFunWidget> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: 610,
+      height: 595,
       //color: Colors.grey,
       alignment: Alignment.topCenter,
       child: new GridView.count(
@@ -305,32 +308,35 @@ userFunListGenerator(Map<String, String> user_fun_getlist) {
   List<Widget> user_fun_outlist = [];
   List result_list = [];
   if (funcounter == 0) {
-    for (int i = 1; i < 10; i++){
+    for (int i = 1; i < 10; i++) {
       user_fun_outlist
-      ..add(
-        Container(
-          height: 90,
-          width: 80,
-          alignment: Alignment.topCenter,
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              IconButton(
-                icon: Image.network(
-                    'http://img.599ku.com/element_min_new_pic/0/56/30/81/5b01ebee94c1839c4c23cb998da42a47.png'),
-                iconSize: 80,
-                onPressed: () {},
-                tooltip: '点一点',
-              ),
-              Text(
-                  '暂无数据',
+        ..add(
+          Container(
+            height: 90,
+            width: 80,
+            alignment: Alignment.topCenter,
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  icon: FadeInImage.assetNetwork(
+                      placeholder: 'icons/app_icon/lp_app_icon.png',
+                      image: 'http://img.599ku.com/element_min_new_pic/0/56/30/81/5b01ebee94c1839c4c23cb998da42a47.png'),
+                  // icon: Image.network(
+                  //     'http://img.599ku.com/element_min_new_pic/0/56/30/81/5b01ebee94c1839c4c23cb998da42a47.png'),
+                  iconSize: 80,
+                  onPressed: () {},
+                  tooltip: '点一点',
+                ),
+                Text(
+                  '未配置功能',
                   style: TextStyle(fontSize: 15, color: Color(0xFF2F2F39)),
                 ),
-            ],
+              ],
+            ),
           ),
-        ),
-      );
+        );
     }
   } else {
     user_fun_getlist.forEach((String key, String value) {
@@ -347,7 +353,10 @@ userFunListGenerator(Map<String, String> user_fun_getlist) {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 IconButton(
-                  icon: Image.network(icon_url),
+                  icon: FadeInImage.assetNetwork(
+                      placeholder: 'icons/app_icon/lp_app_icon.png',
+                      image: icon_url),
+                  //icon: Image.network(icon_url),
                   iconSize: 80,
                   onPressed: () {},
                   tooltip: fun_name,
