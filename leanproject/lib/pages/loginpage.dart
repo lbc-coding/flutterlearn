@@ -39,6 +39,7 @@ class _LogInPage extends State<LogInPage> {
                   style: TextStyle(
                     fontSize: 24,
                     color: Color(0xFF2F2F39),
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
@@ -90,33 +91,49 @@ class _LogInPage extends State<LogInPage> {
               ),
             ),
             // 登录按钮组件
-            new Container(
-              width: 343,
-              height: 90,
-              padding: EdgeInsets.fromLTRB(16, 40, 16, 0),
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: new Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  new RaisedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/');
-                    },
-                    child: Text(
-                      '登 录',
-                      style: TextStyle(fontSize: 16, color: Color(0xFFFFFFFF)),
-                    ),
-                    disabledColor: Colors.blue[40],
-                    color: Color(0xFF177AE6),
-                    padding: EdgeInsets.fromLTRB(137, 8, 137, 8),
-                  )
-                ],
-              ),
-            ),
+            loginbuttongenerator(judgeButtonisdisabled(1,7), context),
           ],
         ),
       ),
     );
   }
+}
+
+// 判断登录按钮是否不可用
+bool judgeButtonisdisabled(int usernamelen, int usercodelen) {
+  if (usernamelen >= 1 && usercodelen >= 6) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// 登录按钮生成器
+loginbuttongenerator(bool isbuttondisabled, dynamic context) {
+  return Container(
+    width: 343,
+    height: 90,
+    padding: EdgeInsets.fromLTRB(16, 40, 16, 0),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: new Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        new RaisedButton(
+          onPressed: isbuttondisabled
+              ? null
+              : () {
+                  Navigator.pushNamed(context, '/');
+                },
+          child: Text(
+            '登 录',
+            style: TextStyle(fontSize: 16, color: Color(0xFFFFFFFF)),
+          ),
+          disabledColor: Colors.blue[40],
+          color: Color(0xFF177AE6),
+          padding: EdgeInsets.fromLTRB(137, 8, 137, 8),
+        )
+      ],
+    ),
+  );
 }
