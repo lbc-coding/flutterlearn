@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-import 'package:leanprojectapp/pages/homepage.dart';
-import 'package:leanprojectapp/pages/loginpage.dart';
+import 'package:leanprojectapp/pages/homepage/homepage.dart';
+import 'package:leanprojectapp/pages/loginpage/loginpage.dart';
 
 void main() {
   runApp(LeanProjectApp());
@@ -17,6 +17,7 @@ class LeanProjectApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '精益工程', //应用名称精益工程
+      theme: ThemeData.light(),
       initialRoute: '/',
       // 定义项目路由
       routes: {

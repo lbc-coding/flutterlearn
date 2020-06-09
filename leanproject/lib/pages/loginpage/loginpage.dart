@@ -12,8 +12,23 @@ class LogInPage extends StatefulWidget {
 
 // 定义登录页面状态组件state
 class _LogInPage extends State<LogInPage> {
+  String _username;
+  String _userpwd;
+  bool _ispwdhide = true;
+
+  void _uodateusername(String username) {
+      _username = username;
+  }
+
+  void _uodateuserpwd(String userpwd) {
+      _userpwd = userpwd;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final _usernamecontroller = TextEditingController();
+    final _userpwdcontroller = TextEditingController();
+
     return Scaffold(
       body: Container(
         height: 799,
@@ -63,6 +78,14 @@ class _LogInPage extends State<LogInPage> {
                   ),
                   new TextField(
                     keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                    autofocus: true,
+                    controller: _usernamecontroller
+                      ..addListener(() {
+                        _uodateusername(_usernamecontroller.text);
+                        print(_usernamecontroller.text);
+                      }),
+                      onEditingComplete: () => print(_usernamecontroller.text),
                   ),
                 ],
               ),
@@ -86,12 +109,21 @@ class _LogInPage extends State<LogInPage> {
                   ),
                   new TextField(
                     keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.go,
+                    obscureText: _ispwdhide,
+                    controller: _userpwdcontroller
+                      ..addListener(() {
+                        _uodateuserpwd(_userpwdcontroller.text);
+                        print(_userpwdcontroller.text);
+                      }),
+                    onEditingComplete: () => print(_userpwdcontroller.text),
                   ),
                 ],
               ),
             ),
             // 登录按钮组件
-            loginbuttongenerator(judgeButtonisdisabled(1,7), context),
+            loginbuttongenerator(
+                judgeButtonisdisabled(1, 7), context),
           ],
         ),
       ),
