@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:leanprojectapp/model/homepage_model.dart';
+import 'package:leanprojectapp/basesrc/http_methods.dart';
 
 // 定义首页顶部控件
 class TopWidget extends StatelessWidget {
@@ -9,6 +10,8 @@ class TopWidget extends StatelessWidget {
   TopWidget({Key key, this.model}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    // final httpservice = new HttpManager();
+
     return FractionallySizedBox(
       child: Container(
         //width: 375,
@@ -51,7 +54,9 @@ class TopWidget extends StatelessWidget {
               color: Colors.white,
               iconSize: 24.0,
               tooltip: '查看上传列表',
-              onPressed: () {}),
+              onPressed: () {
+                HttpManager().get('/v2/note',data: { "id": "231928725"});
+              }),
         ),
         // 设置入口
         new Padding(

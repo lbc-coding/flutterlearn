@@ -6,7 +6,8 @@ import 'dart:async';
 
 import 'package:leanprojectapp/pages/homepage/homepage.dart';
 import 'package:leanprojectapp/pages/loginpage/loginpage.dart';
-
+import 'package:leanprojectapp/basesrc/device_info.dart';
+import 'package:leanprojectapp/basesrc/http_methods.dart';
 void main() {
   runApp(LeanProjectApp());
 }
