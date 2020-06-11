@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 // 创建http管理类
 class HttpManager {
 
-  final String _BASEURL = 'http://www.douban.com';
+  final String _BASEURL = 'https://www.igetget.com';
   final int _CONNECTTIMEOUT = 5000;
   final int _RECEIVETIMEOUT = 3000;
 

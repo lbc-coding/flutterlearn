@@ -55,7 +55,7 @@ class TopWidget extends StatelessWidget {
               iconSize: 24.0,
               tooltip: '查看上传列表',
               onPressed: () {
-                HttpManager().get('/v2/note',data: { "id": "231928725"});
+                HttpManager().get('/video/20191212/70n1lXOQ25aKJkP38SxLpAG6r3eyWvz9');
               }),
         ),
         // 设置入口
