@@ -49,29 +49,23 @@ dev_dependencies:
 flutter:
   assets:
     - icons/arrow_right/ic_arrow_right_sys.png
-    - icons/arrow_right/1.0x/ic_arrow_right_sys.png
     - icons/arrow_right/2.0x/ic_arrow_right_sys.png
     - icons/arrow_right/3.0x/ic_arrow_right_sys.png
     - icons/engineer_photo/ic_engineer.png
-    - icons/engineer_photo/1.0x/ic_engineer.png
     - icons/engineer_photo/2.0x/ic_engineer.png
     - icons/engineer_photo/3.0x/ic_engineer.png
     - icons/set_sys/ic_set_sys.png
-    - icons/set_sys/1.0x/ic_set_sys.png
     - icons/set_sys/2.0x/ic_set_sys.png
     - icons/set_sys/3.0x/ic_set_sys.png
     - icons/upload_sys/ic_upload_sys.png
-    - icons/upload_sys/1.0x/ic_upload_sys.png
     - icons/upload_sys/2.0x/ic_upload_sys.png
     - icons/upload_sys/3.0x/ic_upload_sys.png
     - icons/app_icon/lp_app_icon.png
     - icons/app_icon/2.0x/lp_app_icon.png
     - icons/eye_hide/ic_hide_sys.png
-    - icons/eye_hide/1.0x/ic_hide_sys.png
     - icons/eye_hide/2.0x/ic_hide_sys.png
     - icons/eye_hide/3.0x/ic_hide_sys.png
     - icons/eye_show/ic_show_sys.png
-    - icons/eye_show/1.0x/ic_show_sys.png
     - icons/eye_show/2.0x/ic_show_sys.png
     - icons/eye_show/3.0x/ic_show_sys.png
 

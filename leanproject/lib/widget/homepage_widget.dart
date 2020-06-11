@@ -48,19 +48,19 @@ class TopWidget extends StatelessWidget {
       children: <Widget>[
         // 上传列表入口
         new Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+          padding: EdgeInsets.fromLTRB(24, 0, 0, 20),
           child: new IconButton(
               icon: Image.asset('icons/upload_sys/ic_upload_sys.png'),
               color: Colors.white,
               iconSize: 24.0,
               tooltip: '查看上传列表',
               onPressed: () {
-                HttpManager().get('/v2/note',data: { "id": "231928725"});
+                HttpManager().get('/news');
               }),
         ),
         // 设置入口
         new Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+          padding: EdgeInsets.fromLTRB(24, 0, 0, 20),
           child: new IconButton(
               icon: Image.asset('icons/set_sys/ic_set_sys.png'),
               color: Colors.white,
@@ -296,7 +296,7 @@ class _BottomFunWidget extends State<BottomFunWidget> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: 595,
+      height: 593.5,
       //color: Colors.grey,
       alignment: Alignment.topCenter,
       child: new GridView.count(
