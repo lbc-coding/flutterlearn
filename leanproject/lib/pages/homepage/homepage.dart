@@ -24,9 +24,9 @@ class _HomePage extends State<HomePage> {
             model: TopItemModel(
               user_photo_url:
                   'https://piccdn3.umiwi.com/img/201912/11/201912111903106605662739.png', // 用户头像url
-              user_name: '薛兆丰呀', // 用户姓名
+              user_name: '丰臣秀吉', // 用户姓名
               user_company: '得到（天津）文化传播有限公司', // 用户所属公司
-              user_roles: ['宝藏薛兆丰', '工程经理', '材料员'], // 用户角色列表
+              user_roles: ['房修工程师', '工程经理', '材料员'], // 用户角色列表
             ),
           ),
           // 首页功能入口区

@@ -17,7 +17,7 @@ class TopWidget extends StatelessWidget {
         //width: 375,
         height: 204,
         alignment: Alignment.center,
-        padding: const EdgeInsets.fromLTRB(16, 40, 16, 0),
+        padding: const EdgeInsets.fromLTRB(16, 54, 16, 0),
         //渐变色装饰
         decoration: new BoxDecoration(
           gradient: LinearGradient(
@@ -48,19 +48,19 @@ class TopWidget extends StatelessWidget {
       children: <Widget>[
         // 上传列表入口
         new Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+          padding: EdgeInsets.fromLTRB(24, 0, 0, 20),
           child: new IconButton(
               icon: Image.asset('icons/upload_sys/ic_upload_sys.png'),
               color: Colors.white,
               iconSize: 24.0,
               tooltip: '查看上传列表',
               onPressed: () {
-                HttpManager().get('/video/20191212/70n1lXOQ25aKJkP38SxLpAG6r3eyWvz9');
+                HttpManager().get('/news');
               }),
         ),
         // 设置入口
         new Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+          padding: EdgeInsets.fromLTRB(24, 0, 0, 20),
           child: new IconButton(
               icon: Image.asset('icons/set_sys/ic_set_sys.png'),
               color: Colors.white,
@@ -114,7 +114,9 @@ class TopWidget extends StatelessWidget {
                   ),
                   // 用户角色
                   Container(
-                    padding: EdgeInsets.fromLTRB(8, 5, 0, 5),
+                    // padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
@@ -176,7 +178,7 @@ userRolesGenerator(List<String> rolesInList) {
       Container(
         alignment: Alignment.center,
         padding: EdgeInsets.fromLTRB(8, 3, 8, 3),
-        margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
         decoration: BoxDecoration(
           border: Border.all(
             color: const Color(0xFF00C0EF),
@@ -199,7 +201,7 @@ userRolesGenerator(List<String> rolesInList) {
       Container(
         alignment: Alignment.center,
         padding: EdgeInsets.fromLTRB(8, 3, 8, 3),
-        margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
         decoration: BoxDecoration(
           border: Border.all(
             color: const Color(0xFF00C0EF),
@@ -220,7 +222,7 @@ userRolesGenerator(List<String> rolesInList) {
       Container(
         alignment: Alignment.center,
         padding: EdgeInsets.fromLTRB(8, 3, 8, 3),
-        margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
         decoration: BoxDecoration(
           border: Border.all(
             color: const Color(0xFF00C0EF),
@@ -242,7 +244,7 @@ userRolesGenerator(List<String> rolesInList) {
       Container(
         alignment: Alignment.center,
         padding: EdgeInsets.fromLTRB(8, 3, 8, 3),
-        margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
         decoration: BoxDecoration(
           border: Border.all(
             color: const Color(0xFF00C0EF),
@@ -262,8 +264,29 @@ userRolesGenerator(List<String> rolesInList) {
     rolesOutList.add(
       Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
-        margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+        padding: EdgeInsets.fromLTRB(8, 3, 8, 3),
+        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color(0xFF00C0EF),
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(11),
+        ),
+        child: new Text(
+          rolesInList[1],
+          style: TextStyle(
+            fontSize: 11,
+            color: Color(0xFF00C0EF),
+          ),
+        ),
+      ),
+    );
+    rolesOutList.add(
+      Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.fromLTRB(8, 3, 8, 3),
+        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
         decoration: BoxDecoration(
           border: Border.all(
             color: const Color(0xFF00C0EF),
@@ -296,7 +319,7 @@ class _BottomFunWidget extends State<BottomFunWidget> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: 595,
+      height: 593.5,
       //color: Colors.grey,
       alignment: Alignment.topCenter,
       child: new GridView.count(
