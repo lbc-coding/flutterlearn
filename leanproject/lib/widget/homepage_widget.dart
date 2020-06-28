@@ -14,7 +14,6 @@ class TopWidget extends StatelessWidget {
 
     return FractionallySizedBox(
       child: Container(
-        //width: 375,
         height: 204,
         alignment: Alignment.center,
         padding: const EdgeInsets.fromLTRB(16, 54, 16, 0),
@@ -74,92 +73,105 @@ class TopWidget extends StatelessWidget {
 
   // 构建卡片下部用户信息行
   Widget UserMsgRow(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Stack(
+      alignment: Alignment.center,
       children: <Widget>[
-        // 用户头像
-        Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
-          child: new ClipOval(
-            child: FadeInImage.assetNetwork(
-              placeholder: 'icons/engineer_photo/ic_engineer.png',
-              image: model.user_photo_url,
-              width: 60,
-              height: 60,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            // 用户头像
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
+              child: new ClipOval(
+                child: FadeInImage.assetNetwork(
+                  placeholder: 'icons/engineer_photo/ic_engineer.png',
+                  image: model.user_photo_url,
+                  width: 60,
+                  height: 60,
+                ),
+              ),
             ),
-          ),
-        ),
-        // 姓名、角色、所属公司容器
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              // 用户姓名与角色
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
+            // 姓名、角色、所属公司容器
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  //用户姓名
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 3, 0, 3),
-                    child: new Text(
-                      model.user_name,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
-                      maxLines: 1,
-                    ),
+                  // 用户姓名与角色
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      //用户姓名
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 3, 0, 3),
+                        child: new Text(
+                          model.user_name,
+                          textAlign: TextAlign.center,
+                          style:
+                              TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
+                          maxLines: 1,
+                        ),
+                      ),
+                      // 用户角色
+                      Container(
+                        // padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: userRolesGenerator(model.user_roles),
+                        ),
+                      ),
+                    ],
                   ),
-                  // 用户角色
-                  Container(
-                    // padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: userRolesGenerator(model.user_roles),
+                  // 用户所属公司
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 7, 0, 7),
+                    child: new Text(
+                      model.user_company,
+                      style: TextStyle(fontSize: 14, color: Color(0xFFFFFFFF)),
+                      maxLines: 1,
                     ),
                   ),
                 ],
               ),
-              // 用户所属公司
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 7, 0, 7),
-                child: new Text(
-                  model.user_company,
-                  style: TextStyle(fontSize: 14, color: Color(0xFFFFFFFF)),
-                  maxLines: 1,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
         // 个人主页右箭头
-        new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            // 创建箭头容器
-            new Container(
-              height: 30,
-              alignment: Alignment.centerLeft,
-              child: new IconButton(
-                  icon: Image.asset('icons/arrow_right/ic_arrow_right_sys.png'),
-                  color: Colors.white,
-                  iconSize: 16.0,
-                  tooltip: '设置',
-                  onPressed: () {
-                    // 临时定义导航到登录页
-                    Navigator.pushNamed(context, 'loginpage');
-                  }),
-            ),
-            // 占位容器
-            new Container(
-              height: 30,
-              alignment: Alignment.centerLeft,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                // 创建箭头容器
+                new Container(
+                  height: 30,
+                  alignment: Alignment.centerLeft,
+                  child: new IconButton(
+                      icon: Image.asset(
+                          'icons/arrow_right/ic_arrow_right_sys.png'),
+                      color: Colors.white,
+                      iconSize: 16.0,
+                      tooltip: '设置',
+                      onPressed: () {
+                        // 临时定义导航到登录页
+                        Navigator.pushNamed(context, 'loginpage');
+                      }),
+                ),
+                // 占位容器
+                new Container(
+                  height: 30,
+                  alignment: Alignment.centerLeft,
+                ),
+              ],
             ),
           ],
         ),
@@ -318,10 +330,8 @@ class BottomFunWidget extends StatefulWidget {
 class _BottomFunWidget extends State<BottomFunWidget> {
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      height: 593.5,
-      //color: Colors.grey,
-      alignment: Alignment.topCenter,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height - 204,
       child: new GridView.count(
         primary: false,
         padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
@@ -353,7 +363,8 @@ userFunListGenerator(Map<String, String> user_fun_getlist) {
                 IconButton(
                   icon: FadeInImage.assetNetwork(
                       placeholder: 'icons/app_icon/lp_app_icon.png',
-                      image: 'http://img.599ku.com/element_min_new_pic/0/56/30/81/5b01ebee94c1839c4c23cb998da42a47.png'),
+                      image:
+                          'http://img.599ku.com/element_min_new_pic/0/56/30/81/5b01ebee94c1839c4c23cb998da42a47.png'),
                   // icon: Image.network(
                   //     'http://img.599ku.com/element_min_new_pic/0/56/30/81/5b01ebee94c1839c4c23cb998da42a47.png'),
                   iconSize: 80,
@@ -427,5 +438,25 @@ Map<String, String> funlist = {
   '田轩是我':
       'https://piccdn3.umiwi.com/img/201912/12/201912121343005044860898.png',
   '罗振宇是我':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111912369664627642.png',
+  '就是刘润':
+  'https://piccdn3.umiwi.com/img/201912/11/201912111849270831585814.png',
+  '就是余剑锋':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111857082259233096.png',
+  '就是万维钢':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111908345980865404.png',
+  '就是田轩':
+      'https://piccdn3.umiwi.com/img/201912/12/201912121343005044860898.png',
+  '就是罗振宇':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111912369664627642.png',
+  '刘润是我呀':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111849270831585814.png',
+  '余剑锋是我呀':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111857082259233096.png',
+  '万维钢是我呀':
+      'https://piccdn3.umiwi.com/img/201912/11/201912111908345980865404.png',
+  '田轩是我呀':
+      'https://piccdn3.umiwi.com/img/201912/12/201912121343005044860898.png',
+  '罗振宇是我呀':
       'https://piccdn3.umiwi.com/img/201912/11/201912111912369664627642.png',
 };
